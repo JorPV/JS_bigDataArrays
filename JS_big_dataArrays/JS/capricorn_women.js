@@ -1,29 +1,39 @@
 // SUB-EXERCISE Capricorn women
 const btnCapricornWomen = document.querySelector(".btn-capricorn_women");
 const filteredPeople = [];
-const birthdayArray = [];
+const capricornArray = [];
+
 // filter Capricorn
-for (let {birthday: {dmy: d}} of randomPersonData) {
-  capricornArray.push(d);
-};
-console.log(birthdayArray);
+const isCapricorn = (person) => {
+  const dmy = person.birthday.dmy;
+  return dmy; // true if birthday object matches the requirement "tussen December 22 en January 19"
+}
 
 
-// filter women, aged 30 or older and Capricorn
+// filter women, aged 30 or older
 const womanArray = randomPersonData.filter(function (person) {
-  return person.title == "mrs" && person.age >= 30 && person.birthday;
+  return person.gender === "female" && person.age >= 30// && person.birthday;
 });
-console.log(womanArray);
+// console.log(womanArray);
+
+// same as 
+const persons = [...randomPersonData];
+
+const isFemale = (person) => person.gender === "female";
+const isAbove30 = (person) => person.age >= 30;
+
+const femalesAbove30 = persons.filter(isFemale).filter(isAbove30);
+console.log(femalesAbove30);
 
 // Get an name, surname and photo data
-function listOfWoman() {
-  const ulCapriWoman = document.createElement("ul");
+const listOfWoman = () => {
+  const ul = document.querySelector(".list-output");
   womanArray.map((woman) => {
     const liWoman = document.createElement("li")
     const img = document.createElement("img");
       img.src = woman.photo;
       liWoman.appendChild(img);
-      ulCapriWoman.appendChild(liWoman); 
+      ul.appendChild(liWoman); 
     if (!filteredPeople.includes(woman)) {
       filteredPeople.push(woman.name + " " + woman.surname + " " + img.src);
     }

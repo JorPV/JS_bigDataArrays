@@ -1,7 +1,5 @@
 // SUB-EXERCISE Country list
 
-
-
 // get countries
 const countriesArray = [];
 
@@ -41,17 +39,10 @@ function getPersonData() {
 }
 }
 
-// }
-
-// getPersonData ();
-
-const test = () => {
-  console.log("The click event is working");
-};
 
 // Add list to event button
 const btnCountries = document.querySelector(".btn-countries");
-btnCountries.addEventListener("click", (event) => getPersonData(event), test());
+btnCountries.addEventListener("click", (event) => getPersonData(event));
 
 // btnCountries.addEventListener("click", getPersonData());
 
